@@ -24,4 +24,8 @@
       <PackageReference Include="MySql.EntityFrameworkCore" Version="9.0.3" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Lab-10-Qquelcca.Domain\Lab-10-Qquelcca.Domain.csproj" />
+    </ItemGroup>
+
 </Project>

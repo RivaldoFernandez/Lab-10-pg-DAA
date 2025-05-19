@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Lab_10_Qquelcca.Infrastructure.Context;
+namespace Lab_10_Qquelcca.Domain.Entities;
+
 
 public partial class Ticket
 {

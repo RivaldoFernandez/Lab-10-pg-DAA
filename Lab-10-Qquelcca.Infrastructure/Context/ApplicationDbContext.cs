@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Lab_10_Qquelcca.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Lab_10_Qquelcca.Infrastructure.Context;

@@ -1,20 +1,17 @@
-namespace Lab_10_Qquelcca.Infrastructure.Configuration;
-
-public class InfrastructureServicesExtension
-{
-    
-}
-
-// namespace TrainingCenter.Infrastructure.Configuration;
+// using Lab_10_Qquelcca.Infrastructure.Context;
+// using Microsoft.Extensions.Configuration;
+// using Microsoft.Extensions.DependencyInjection;
 //
-// public static class InfrastructureServicesExtensions
+// namespace Lab_10_Qquelcca.Infrastructure.Configuration;
+//
+// public class InfrastructureServicesExtension
 // {
 //     public static IServiceCollection AddInfrastructureServices(
 //         this IServiceCollection services, 
 //         IConfiguration configuration) 
 //     {
 //         // DataBase Connection
-//         services.AddDbContext<DbContext>((serviceProvider, options) => 
+//         services.AddDbContext<ApplicationDbContext>((serviceProvider, options) => 
 //         {
 //             var connectionString = configuration.GetConnectionString("DefaultConnection");
 //             options.UseNpgsql(connectionString);
@@ -30,3 +27,5 @@ public class InfrastructureServicesExtension
 //         return services;
 //     }
 // }
+//
+//
