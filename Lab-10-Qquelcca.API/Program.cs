@@ -102,12 +102,15 @@
 using Lab_10_Qquelcca.Application.Interfaces;
 using Lab_10_Qquelcca.Application.Services;
 using Lab_10_Qquelcca.Domain.Entities;
+using Lab_10_Qquelcca.Domain.Interfaces;
+using Lab_10_Qquelcca.Infrastructure.Repositories;
 using Lab_10_Qquelcca.Infrastructure.DependencyInjection;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using Lab_10_Qquelcca.Domain.Interfaces.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -152,6 +155,8 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 // 5. Registrar infraestructura y dependencias personalizadas
 builder.Services.AddInfrastructure(connectionString);
 
+builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+builder.Services.AddScoped<IRoleService, RoleService>();
 // 6. Registrar servicios de aplicación
 builder.Services.AddScoped<IAuthService, AuthService>();
 

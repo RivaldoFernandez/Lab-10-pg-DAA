@@ -1,6 +1,4 @@
 using Lab_10_Qquelcca.Domain.Entities;
-using System;
-using System.Threading.Tasks;
 
 namespace Lab_10_Qquelcca.Domain.Interfaces.Repositories
 {
@@ -8,5 +6,8 @@ namespace Lab_10_Qquelcca.Domain.Interfaces.Repositories
     {
         Task<Role> GetByIdAsync(Guid id);
         // Otros métodos según necesidades...
+        Task AddAsync(Role role);
+        Task<Role?> GetByNameAsync(string roleName);
+        Task SaveChangesAsync();
     }
 }
