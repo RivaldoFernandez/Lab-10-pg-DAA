@@ -8,7 +8,7 @@ namespace Lab_10_Qquelcca.Domain.Interfaces.Repositories
         Task<IEnumerable<Response>> GetAllAsync();
         Task AddAsync(Response response);
         void Update(Response response);
-        void Remove(Response response); 
+        void Remove(Response response);
         Task SaveChangesAsync();
     }
 }
