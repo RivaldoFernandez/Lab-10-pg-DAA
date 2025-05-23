@@ -1,0 +1,27 @@
+using Lab_10_Qquelcca.Domain.Entities;
+using Lab_10_Qquelcca.Domain.Interfaces.Repositories;
+using Lab_10_Qquelcca.Infrastructure.Context;
+using Microsoft.EntityFrameworkCore;
+
+namespace Lab_10_Qquelcca.Infrastructure.Repositories
+{
+    public class RoleRepository : IRoleRepository
+    {
+        private readonly ApplicationDbContext _context;
+
+        public RoleRepository(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        // Implementa aquí los métodos definidos en IRoleRepository
+        // Por ejemplo:
+
+        public async Task<Role> GetByIdAsync(Guid id)
+        {
+            return await _context.Roles.FindAsync(id);
+        }
+
+        // Otros métodos según la interfaz...
+    }
+}

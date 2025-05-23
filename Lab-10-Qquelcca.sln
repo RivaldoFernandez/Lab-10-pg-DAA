@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab-10-Qquelcca.Persistense", "Lab-10-Qquelcca.Persistense\Lab-10-Qquelcca.Persistense.csproj", "{A56C8F2C-C55E-435F-B7E1-EFE61ACD1177}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab-10-Qquelcca.API", "Lab-10-Qquelcca.API\Lab-10-Qquelcca.API.csproj", "{A56C8F2C-C55E-435F-B7E1-EFE61ACD1177}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab-10-Qquelcca.Application", "Lab-10-Qquelcca.Application\Lab-10-Qquelcca.Application.csproj", "{6663051C-94AF-47F9-978C-181AE754AE36}"
 EndProject

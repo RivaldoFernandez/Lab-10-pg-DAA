@@ -8,8 +8,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Adapters\" />
-      <Folder Include="Repositories\" />
+      <ProjectReference Include="..\Lab-10-Qquelcca.Application\Lab-10-Qquelcca.Application.csproj" />
+      <ProjectReference Include="..\Lab-10-Qquelcca.Domain\Lab-10-Qquelcca.Domain.csproj" />
     </ItemGroup>
 
     <ItemGroup>
@@ -18,15 +18,12 @@
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         <PrivateAssets>all</PrivateAssets>
       </PackageReference>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.5" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.5">
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         <PrivateAssets>all</PrivateAssets>
       </PackageReference>
       <PackageReference Include="MySql.EntityFrameworkCore" Version="9.0.3" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\Lab-10-Qquelcca.Domain\Lab-10-Qquelcca.Domain.csproj" />
     </ItemGroup>
 
 </Project>

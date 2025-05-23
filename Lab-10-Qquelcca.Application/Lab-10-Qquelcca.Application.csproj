@@ -8,9 +8,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="DTOs\" />
-      <Folder Include="Interfaces\" />
-      <Folder Include="Services\" />
+      <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.5" />
+      <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.10.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Lab-10-Qquelcca.Domain\Lab-10-Qquelcca.Domain.csproj" />
     </ItemGroup>
 
 </Project>

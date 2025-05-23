@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>Lab_10_Qquelcca</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.5" />
+      <PackageReference Include="MySql.EntityFrameworkCore" Version="9.0.3" />
+      <PackageReference Include="Swashbuckle.AspNetCore" Version="8.1.1" />
+      <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.10.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Lab-10-Qquelcca.Application\Lab-10-Qquelcca.Application.csproj" />
+      <ProjectReference Include="..\Lab-10-Qquelcca.Domain\Lab-10-Qquelcca.Domain.csproj" />
+      <ProjectReference Include="..\Lab-10-Qquelcca.Infrastructure\Lab-10-Qquelcca.Infrastructure.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Views\Home\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Home\Privacy.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Shared\Error.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Shared\_Layout.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Shared\_ValidationScriptsPartial.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\_ViewImports.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\_ViewStart.cshtml" />
+    </ItemGroup>
+
+</Project>
