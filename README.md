@@ -18,9 +18,9 @@ Este proyecto gestiona un sistema de tickets y respuestas (Response) para la ges
 
 ## Tecnologías usadas
 
-- .NET 8
+- .NET 9
 - Entity Framework Core
-- MySQL / MariaDB
+- MySQL 
 - Swagger para documentación de API
 - Clean Architecture
 
@@ -31,5 +31,5 @@ Este proyecto gestiona un sistema de tickets y respuestas (Response) para la ges
 1. Clona el repositorio
 
 ```bash
-git clone https://github.com/tu_usuario/Lab-10-Qquelcca.git
+git clone https://github.com/RivaldoFernandez/Lab-10-Qquelcca.git
 cd Lab-10-Qquelcca
