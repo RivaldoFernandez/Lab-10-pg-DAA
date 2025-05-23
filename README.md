@@ -31,5 +31,5 @@ Este proyecto gestiona un sistema de tickets y respuestas (Response) para la ges
 1. Clona el repositorio
 
 ```bash
-git clone https://github.com/RivaldoFernandez/Lab-10-Qquelcca.git
+git clone https://github.com/RivaldoFernandez/Lab-10-pg-DAA.git
 cd Lab-10-Qquelcca
