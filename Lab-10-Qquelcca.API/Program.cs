@@ -99,37 +99,93 @@
 
 
 
-
 using Lab_10_Qquelcca.Application.Interfaces;
 using Lab_10_Qquelcca.Application.Services;
 using Lab_10_Qquelcca.Domain.Entities;
-using Lab_10_Qquelcca.Domain.Interfaces.Unit;
 using Lab_10_Qquelcca.Infrastructure.DependencyInjection;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Agregar servicios a la aplicación
+// 1. Agregar servicios a la contenedor de dependencias
 builder.Services.AddControllers();
 
-// Agregar Swagger para documentación
+// 2. Agregar Swagger (con soporte para JWT)
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Lab-10-Qquelcca API", Version = "v1" });
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        In = ParameterLocation.Header,
+        Description = "Ingrese su token JWT en este formato: Bearer {su token}",
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "Bearer"
+    });
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type=ReferenceType.SecurityScheme,
+                    Id="Bearer"
+                }
+            },
+            new string[]{}
+        }
+    });
+});
 
-// Inyectar PasswordHasher<User>
+// 3. Inyectar PasswordHasher
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 
-// Obtener cadena de conexión desde appsettings.json
+// 4. Leer cadena de conexión desde appsettings.json
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-// Registrar infraestructura (DbContext, repositorios, UnitOfWork)
+// 5. Registrar infraestructura y dependencias personalizadas
 builder.Services.AddInfrastructure(connectionString);
 
-// Registrar servicios de aplicación
+// 6. Registrar servicios de aplicación
 builder.Services.AddScoped<IAuthService, AuthService>();
+
+// 7. Configurar autenticación JWT
+var jwtKey = builder.Configuration["Jwt:Key"];
+var jwtIssuer = builder.Configuration["Jwt:Issuer"];
+var jwtAudience = builder.Configuration["Jwt:Audience"];
+
+builder.Services.AddAuthentication(options =>
+    {
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
+    .AddJwtBearer(options =>
+    {
+        options.RequireHttpsMetadata = false;
+        options.SaveToken = true;
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = jwtIssuer,
+            ValidAudience = jwtAudience,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey!)) // Aquí fallaba
+        };
+    });
+
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
+// 8. Configurar middleware
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
@@ -149,9 +205,9 @@ else
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
 
+app.UseAuthentication(); // JWT Auth
 app.UseAuthorization();
 
 app.MapControllers();

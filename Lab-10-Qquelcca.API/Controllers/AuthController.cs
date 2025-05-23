@@ -25,4 +25,15 @@ public class AuthController : ControllerBase
 
         return BadRequest("User registration failed");
     }
+    
+    [HttpPost("login")]
+    public async Task<IActionResult> Login(LoginRequest request)
+    {
+        var response = await _authService.LoginAsync(request);
+        if (!response.Success)
+        {
+            return Unauthorized(response.Message);
+        }
+        return Ok(response);
+    }
 }
