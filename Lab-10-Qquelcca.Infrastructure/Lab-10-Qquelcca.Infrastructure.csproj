@@ -9,6 +9,7 @@
 
     <ItemGroup>
       <Folder Include="Adapters\" />
+      <Folder Include="Repositories\" />
     </ItemGroup>
 
     <ItemGroup>
