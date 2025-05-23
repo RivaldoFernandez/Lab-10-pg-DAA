@@ -5,10 +5,10 @@ namespace Lab_10_Qquelcca.Domain.Interfaces.Repositories
 {
     public interface ITicketRepository
     {
-        Task<Ticket> GetByIdAsync(Guid id);
-        Task<IEnumerable<Ticket>> GetAllAsync();
+        Task<Ticket?> GetByIdAsync(Guid ticketId);
         Task AddAsync(Ticket ticket);
-        void Update(Ticket ticket);
-        void Remove(Ticket ticket);
+        Task UpdateAsync(Ticket ticket);
+        Task SaveChangesAsync();
+        Task<IEnumerable<Ticket>> GetAllAsync();
     }
 }

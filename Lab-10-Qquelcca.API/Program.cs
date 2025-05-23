@@ -114,7 +114,7 @@ using Lab_10_Qquelcca.Domain.Interfaces.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 1. Agregar servicios a la contenedor de dependencias
+// 1. Agregar servicios a contenedor de dependencias
 builder.Services.AddControllers();
 
 // 2. Agregar Swagger (con soporte para JWT)
@@ -157,8 +157,15 @@ builder.Services.AddInfrastructure(connectionString);
 
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddScoped<IRoleService, RoleService>();
+builder.Services.AddScoped<ITicketRepository, TicketRepository>();
+builder.Services.AddScoped<IResponseRepository, ResponseRepository>();
+builder.Services.AddScoped<ITicketService, TicketService>();
+builder.Services.AddScoped<IUserRoleRepository, UserRoleRepository>();
+builder.Services.AddScoped<UserRoleService>();
+
 // 6. Registrar servicios de aplicación
 builder.Services.AddScoped<IAuthService, AuthService>();
+
 
 // 7. Configurar autenticación JWT
 var jwtKey = builder.Configuration["Jwt:Key"];

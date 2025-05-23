@@ -41,5 +41,10 @@ namespace Lab_10_Qquelcca.Infrastructure.Repositories
         {
             _context.Responses.Remove(response);
         }
+
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
     }
 }

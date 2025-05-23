@@ -3,7 +3,6 @@ using Lab_10_Qquelcca.Domain.Interfaces.Repositories;
 using Lab_10_Qquelcca.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace Lab_10_Qquelcca.Infrastructure.Repositories
 {
     public class TicketRepository : ITicketRepository
@@ -15,9 +14,11 @@ namespace Lab_10_Qquelcca.Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task<Ticket> GetByIdAsync(Guid id)
+        public async Task<Ticket?> GetByIdAsync(Guid id)
         {
-            return await _context.Tickets.FindAsync(id);
+            return await _context.Tickets
+                .Include(t => t.Responses) // Opcional si usas navegación
+                .FirstOrDefaultAsync(t => t.TicketId == id);
         }
 
         public async Task<IEnumerable<Ticket>> GetAllAsync()
@@ -30,14 +31,15 @@ namespace Lab_10_Qquelcca.Infrastructure.Repositories
             await _context.Tickets.AddAsync(ticket);
         }
 
-        public void Update(Ticket ticket)
+        public async Task UpdateAsync(Ticket ticket)
         {
             _context.Tickets.Update(ticket);
+            await Task.CompletedTask;
         }
 
-        public void Remove(Ticket ticket)
+        public async Task SaveChangesAsync()
         {
-            _context.Tickets.Remove(ticket);
+            await _context.SaveChangesAsync();
         }
     }
 }
